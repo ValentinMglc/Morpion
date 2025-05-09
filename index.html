@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Morpion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+  <h1>Morpion</h1>
+
+  <!-- Menu de sélection de mode de jeu -->
+  <div id="menu">
+    <h2>Choisis un mode de jeu</h2>
+    <div class="settings-panel">
+      <div class="sound-controls">
+        <button id="toggleSound" class="icon-button">
+          <i class="fas fa-volume-up"></i>
+        </button>
+      </div>
+      <div class="theme-selector">
+        <select id="themeSelect">
+          <option value="default">Thème par défaut</option>
+          <option value="dark">Thème sombre</option>
+          <option value="neon">Thème néon</option>
+          <option value="retro">Thème rétro</option>
+        </select>
+      </div>
+      <div class="player-customization">
+        <div class="player-x">
+          <label for="symbolX">Symbole X:</label>
+          <input type="text" id="symbolX" maxlength="1" value="X">
+          <input type="color" id="colorX" value="#e74c3c">
+        </div>
+        <div class="player-o">
+          <label for="symbolO">Symbole O:</label>
+          <input type="text" id="symbolO" maxlength="1" value="O">
+          <input type="color" id="colorO" value="#27ae60">
+        </div>
+      </div>
+    </div>
+    <button onclick="startGame('pvp')">Joueur vs Joueur</button>
+    <button onclick="startGame('ai-easy')">IA Facile</button>
+    <button onclick="startGame('ai-medium')">IA Moyenne</button>
+    <button onclick="startGame('ai-hard')">IA Difficile</button>
+  </div>
+
+  <!-- Grille du jeu -->
+  <div id="board" class="board">
+    <div class="cell" data-index="0"></div>
+    <div class="cell" data-index="1"></div>
+    <div class="cell" data-index="2"></div>
+    <div class="cell" data-index="3"></div>
+    <div class="cell" data-index="4"></div>
+    <div class="cell" data-index="5"></div>
+    <div class="cell" data-index="6"></div>
+    <div class="cell" data-index="7"></div>
+    <div class="cell" data-index="8"></div>
+  </div>
+
+  <!-- Statut du jeu -->
+  <p id="status">Choisis un mode de jeu !</p>
+
+  <!-- Bouton pour recommencer -->
+  <button id="restart" style="display:none" onclick="restartGame()">Recommencer</button>
+
+  <!-- Bouton "Retour au menu" -->
+  <button id="backToMenu" style="display:none" onclick="backToMenu()">Retour au menu</button>
+
+  <!-- Sons du jeu -->
+  <audio id="clickSound" src="assets/sounds/click.mp3" preload="auto"></audio>
+  <audio id="winSound" src="assets/sounds/win.mp3" preload="auto"></audio>
+  <audio id="drawSound" src="assets/sounds/draw.mp3" preload="auto"></audio>
+
+  <script src="script.js"></script>
+  <footer>
+    <p>Développé avec ❤️ par Valentin Migliaccio</p>
+  </footer>
+</body>
+</html> 
